@@ -1,0 +1,6 @@
+.venv/
+.utils/
+.segment/
+.classify/
+.__pycache__/
+.data/
