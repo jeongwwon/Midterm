@@ -1,6 +1,7 @@
-.venv/
+.myvenv/
 .utils/
 .segment/
 .classify/
 .__pycache__/
 .data/
+.runs/
