@@ -1,2 +1,3 @@
 .venv/
 .utils/
+yolov5/*.mp4

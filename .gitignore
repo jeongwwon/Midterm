@@ -206,3 +206,5 @@ cython_debug/
 ./Edge_System/yolov5/venv/*
 ./Service_System/djangoenv/myvenv/*
 
+*.mp4
+
