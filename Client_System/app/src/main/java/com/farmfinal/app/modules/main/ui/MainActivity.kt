@@ -17,8 +17,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
   private val viewModel: MainVM by viewModels<MainVM>()
 
   override fun onInitialized(): Unit {
+    viewModel.fetchData()
     viewModel.navArguments = intent.extras?.getBundle("bundle")
     binding.mainVM = viewModel
+    binding.lifecycleOwner = this
   }
 
   override fun setUpClicks(): Unit {

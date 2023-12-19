@@ -17,6 +17,7 @@ class ChangeDetection:
         res = requests.post(self.HOST + '/api-token-auth/', {'username': self.username,'password': self.password,})
         res.raise_for_status()
         self.token = res.json()['token']
+        self.count=0
     #토큰 저장
         print(self.token)
     def add(self, names, detected_current, save_dir, image,n):
@@ -38,6 +39,7 @@ class ChangeDetection:
         if change_flag == 1:
             self.send(save_dir, image)
 
+
     def send(self, save_dir, image):
         now = datetime.now()
         now.isoformat()
@@ -57,16 +59,19 @@ class ChangeDetection:
         if self.title == "0":
             self.title = "WildBoar"
             self.text = f"농장위치:경희대학교 국제캠퍼스\n침입동물: WildBoar\n 개체 수:{self.count}"
-
+        
     # Post Create
         data = {
             'title': self.title,
             'text': self.text,
             'created_date': now,
-            'published_date': now
+            'published_date': now,
+            'count': int(self.count)
         }
-
+        print("데이터는:",data)
         file = {'image': open(full_path, 'rb')}
         res = requests.post(self.HOST + '/api_root/Post/', data=data, files=file, headers=headers)
         print(res)
+
+
 

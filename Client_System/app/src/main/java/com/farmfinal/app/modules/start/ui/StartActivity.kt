@@ -14,32 +14,32 @@ import kotlin.String
 import kotlin.Unit
 
 class StartActivity : BaseActivity<ActivityStartBinding>(R.layout.activity_start) {
-  private val viewModel: StartVM by viewModels<StartVM>()
+    private val viewModel: StartVM by viewModels<StartVM>()
 
-  override fun onInitialized(): Unit {
-    viewModel.navArguments = intent.extras?.getBundle("bundle")
-    binding.startVM = viewModel
-  }
-
-  override fun setUpClicks(): Unit {
-    binding.btn.setOnClickListener {
-      val destIntent = LoginActivity.getIntent(this, null)
-      startActivity(destIntent)
+    override fun onInitialized(): Unit {
+        viewModel.navArguments = intent.extras?.getBundle("bundle")
+        binding.startVM = viewModel
     }
-    binding.btn1.setOnClickListener {
-      val destIntent = SignupActivity.getIntent(this, null)
-      startActivity(destIntent)
+
+    override fun setUpClicks(): Unit {
+        binding.btn.setOnClickListener {
+            val destIntent = LoginActivity.getIntent(this, null)
+            startActivity(destIntent)
+        }
+        binding.btn1.setOnClickListener {
+            val destIntent = SignupActivity.getIntent(this, null)
+            startActivity(destIntent)
+        }
     }
-  }
 
-  companion object {
-    const val TAG: String = "START_ACTIVITY"
+    companion object {
+        const val TAG: String = "START_ACTIVITY"
 
 
-    fun getIntent(context: Context, bundle: Bundle?): Intent {
-      val destIntent = Intent(context, StartActivity::class.java)
-      destIntent.putExtra("bundle", bundle)
-      return destIntent
+        fun getIntent(context: Context, bundle: Bundle?): Intent {
+            val destIntent = Intent(context, StartActivity::class.java)
+            destIntent.putExtra("bundle", bundle)
+            return destIntent
+        }
     }
-  }
 }

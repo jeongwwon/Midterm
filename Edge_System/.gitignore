@@ -1,4 +1,5 @@
 .venv/
 myvenv/
 .utils/
-yolov5/*.mp4
+./yolov5/*.mp4
+runs/
